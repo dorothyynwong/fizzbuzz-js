@@ -1,15 +1,37 @@
 
-
 // Here, we create our main function.
+
+
+
 function fizzbuzz() {
     
     console.log('Welcome to FizzBuzz!');
 
     // Put your code here...
-   let result = "";
+    let result = "";
+    const factorMap = new Map([
+        [3,"Fizz"],
+        [5, "Buzz"],
+        [7, "Bang"],
+        [11, "Bong"]
+      //  [13, "Fezz"]
+    ]);
+
+   
     for(let i=1; i<=100; i++) {
         let str = [];
-        if (i%3 === 0) str.push("Fizz");
+        let divisble = false;
+
+        for (const[num, word] of factorMap.entries()) {
+            if (i%num === 0) {
+                if (num===11) str=[];
+                str.push(word);
+                divisble = true;
+            }
+        }
+
+        if (!divisble) str.push(i.toString());
+        /*if (i%3 === 0) str.push("Fizz");
         if (i%5 === 0) str.push("Buzz");
         if (i%7 === 0) str.push("Bang");
         if (i%11 === 0) {
@@ -33,7 +55,8 @@ function fizzbuzz() {
             i%11!==0 &&
             i%13!==0
         ) 
-            str.push(i.toString());
+            str.push(i.toString());*/
+
         result += str.join("") + " ";
     }
 
